@@ -10,11 +10,20 @@
 
         <MudGrid>
             <MudItem xs="12" sm="6" md="4">
-                <MudTextField Label="Order Header" @bind-Value="SearchOrderHeader"/>
+                <MudTextField Label="Order Number" @bind-Value="SearchOrderNumber"/>
             </MudItem>
             <MudItem xs="12" sm="6" md="4">
-                <MudTextField Label="Order Type" @bind-Value="SearchOrderType"/>
+                <MudSelect @bind-Value="SearchOrderType" Label="OrderType">
+                    <MudSelectItem Value="string.Empty">All</MudSelectItem>
+                    @foreach (OrderType orderType in Enum.GetValues(typeof(OrderType)))
+                    {
+                        <MudSelectItem Value="@orderType.ToString()">@orderType</MudSelectItem>
+                    }
+                </MudSelect>
+                
             </MudItem>
+           
+            
             <MudItem xs="12" sm="6" md="4">
                 <MudDatePicker Label="From Date" @bind-Date="@FromDate"/>
             </MudItem>
@@ -22,7 +31,8 @@
                 <MudDatePicker Label="To Date" @bind-Date="@ToDate"/>
             </MudItem>
 
-            <MudItem xs="12" sm="6" md="8" Class="d-flex justify-end pa-2 mb-3 mt-3">
+            <MudItem xs="12" sm="6" md="8" Class="d-flex justify-end gap-3 pa-2 mb-3 mt-3">
+                <MudIconButton Icon="@Icons.Material.Filled.Clear" Variant="Variant.Outlined" Color="Color.Primary" @onclick="@(ClearOrderHeaderSearch)"></MudIconButton >
                 <MudIconButton Icon="@Icons.Material.Filled.Search" Variant="Variant.Outlined" Color="Color.Primary" @onclick="SearchOrders"></MudIconButton >
             </MudItem>
         </MudGrid>
@@ -30,7 +40,7 @@
 
 
     
-    <MudTable T="OrderHeader" Class="pa-5 mb-5" Items="@orderHeaders.Take(6)" Hover="true" Breakpoint="Breakpoint.Sm" @ref="mudTable"
+    <MudTable T="OrderHeader" Class="pa-5 mb-5" Items="@OrderHeaders.Take(6)" Hover="true" Breakpoint="Breakpoint.Sm" @ref="MudTable"
               RowClass="cursor-pointer" RowClassFunc="@SelectedRowClassFunc" OnRowClick="RowClickEvent">
         <ToolBarContent >
             <div Class="d-flex justify-end" style="width: 100%">
@@ -79,13 +89,14 @@
                 <MudItem xs="12" sm="6" md="4">
                     <MudTextField Label="Product Code" @bind-Value="SearchProductCode" />
                 </MudItem>
-                <MudItem Class="d-flex justify-end pa-2 mb-3 mt-3">
+                <MudItem Class="d-flex justify-end pa-2 gap-3 mb-3 mt-3">
+                    <MudIconButton Icon="@Icons.Material.Filled.Clear" Variant="Variant.Outlined" Color="Color.Primary" @onclick="ClearOrderLineSearch"></MudIconButton >
                     <MudIconButton Icon="@Icons.Material.Filled.Search" Variant="Variant.Outlined" Color="Color.Primary" @onclick="SearchOrderLines"></MudIconButton >
                 </MudItem>
             </MudGrid>
         </MudExpansionPanel>
         
-        @if (orderLines == null || orderLines.Count == 0)
+        @if (OrderLines.Count == 0)
         {
             <MudPaper>
                 <MudGrid Class="mb-5 mt-15 pa-8">
@@ -104,8 +115,7 @@
         else
         {
 
-            <MudTable T="OrderLine" Class="pa-5" Items="@orderLines.Take(6)" Hover="true" Breakpoint="Breakpoint.Md" @ref="orderLineTable"
-                      RowClass="cursor-pointer">
+            <MudTable T="OrderLine" Class="pa-5" Items="@OrderLines.Take(6)" Hover="false" Breakpoint="Breakpoint.Md" @ref="OrderLineTable">
 
                 <ToolBarContent >
                     <div Class="d-flex justify-end" style="width: 100%">

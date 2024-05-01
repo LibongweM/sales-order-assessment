@@ -1,5 +1,4 @@
 using CoreTest.Models;
-using CoreTest.Services;
 
 namespace CoreTest.Data;
 
@@ -14,7 +13,7 @@ public static class DbInitializer
             return;
         }
 
-        var orderHeaders = new OrderHeader[]
+        var orderHeaders = new[]
         {
             new OrderHeader
             {
@@ -34,12 +33,12 @@ public static class DbInitializer
             }
         };
 
-        foreach (OrderHeader oh in orderHeaders)
+        foreach (var oh in orderHeaders)
         {
             context.OrderHeaders.Add(oh);
         }
 
-        var orderLines = new OrderLine[]
+        var orderLines = new[]
         {
             new OrderLine
             {
@@ -63,7 +62,7 @@ public static class DbInitializer
             }
         };
 
-        foreach (OrderLine ol in orderLines)
+        foreach (var ol in orderLines)
         {
             context.OrderLines.Add(ol);
         }

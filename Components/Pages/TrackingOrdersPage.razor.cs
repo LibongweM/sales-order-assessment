@@ -10,7 +10,7 @@ using MudBlazor;
 
 namespace CoreTest.Components.Pages;
 
-public  class KenbanBoardBase : ComponentBase
+public  class TrackingOrdersBase : ComponentBase
 {
 	[Inject]
 	protected IOrderHeaderService OrderHeaderService { get; set; }

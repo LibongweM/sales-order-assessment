@@ -33,8 +33,4 @@
     <Compile Remove="Components\Pages\EditOrderHeaderScreen.razor.cs" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\js\" />
-  </ItemGroup>
-
 </Project>
