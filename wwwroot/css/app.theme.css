@@ -1,0 +1,70 @@
+@import "app.font.css";
+
+:root {
+    --font-family: 'Pilat Wide';
+  
+    /* Secondary */
+ 
+    --mud-palette-error-text: rgb(255, 255, 255) !important;
+    --mud-palette-background: rgb(249, 249, 249) !important;
+    --mud-palette-primary: rgb(45 66 117) !important;
+    --mud-palette-appbar-background: rgb(249, 249, 249) !important;
+}
+
+
+h1, h2, h3, h4, h5, h6, h7 {
+    font-family: var(--font-family);
+
+    text-transform: uppercase;
+    font-style: normal;
+}
+
+h3.thin, h4.thin, h5.thin {
+    font-weight: 250;
+}
+
+h1 {
+    font-size: 44px;
+    font-weight: 900;
+    line-height: 44px;
+    letter-spacing: -0.5px;
+}
+
+h2 {
+    font-size: 36px;
+    font-weight: 900;
+    line-height: 36px;
+    letter-spacing: -0.5px;
+}
+
+h3 {
+    font-size: 32px;
+    font-weight: 500 !important;
+    line-height: 32px;
+    color: var(--mud-palette-primary) !important;
+}
+
+h4 {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 37.4px;
+    letter-spacing: -0.5px;
+}
+
+h5 {
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+}
+
+h6 {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    color: var(--mud-palette-primary) !important;
+}
+
+
+
+

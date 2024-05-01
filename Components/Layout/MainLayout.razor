@@ -1,0 +1,46 @@
+﻿@using Microsoft.Extensions.Localization
+@inherits LayoutComponentBase
+
+
+<MudThemeProvider />
+<MudDialogProvider MaxWidth="MaxWidth.Medium" />
+<MudSnackbarProvider />
+
+<MudLayout>
+    <MudAppBar Elevation="1">
+        <MudTooltip Arrow="true" >
+            <MudToggleIconButton Class="mr-3"
+                                 Color="@Color.Default"
+                                 Icon="@Icons.Material.Filled.MenuOpen"
+                                 Size="Size.Large"
+                                 Toggled="NavigationMenuDrawerOpen"
+                                 ToggledChanged="ToggleNavigationMenuDrawer"
+                                 ToggledColor="@Color.Default"
+                                 ToggledIcon="@Icons.Material.Filled.Close"/>
+        </MudTooltip>
+    </MudAppBar>
+    <MudDrawer @bind-Open="_drawerOpen" Elevation="2">
+        <MudDrawerHeader>
+            <MudText Typo="Typo.h5" Class="mt-1">Application</MudText>
+        </MudDrawerHeader>
+        <NavMenu />
+    </MudDrawer>
+      <MudMainContent >
+            <MudContainer MaxWidth="MaxWidth.ExtraLarge">
+                @Body
+            </MudContainer>
+        </MudMainContent>
+    
+   
+</MudLayout>
+
+@code {
+    bool _drawerOpen = true;
+
+    [EditorRequired] [Parameter] public bool NavigationMenuDrawerOpen { get; set; }
+    protected void ToggleNavigationMenuDrawer()
+    {
+        _drawerOpen = !_drawerOpen;
+    }
+
+}

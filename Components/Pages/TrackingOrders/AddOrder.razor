@@ -1,0 +1,23 @@
+@inherits AddOrderBase
+
+<MudDialog >
+    <DialogContent >
+        <MudForm >
+            <MudGrid >
+                <MudItem xs="22" sm="18" md="16" Style="width: 300px;">
+                    <MudSelect @bind-Value="SelectedOrderNumber" Label="Order Number">
+                        @foreach (var order in Orders)
+                        {
+                            <MudSelectItem Value="order.OrderNumber">@order.OrderNumber</MudSelectItem>
+                        }
+                    </MudSelect>
+                </MudItem>
+            </MudGrid>
+        </MudForm>
+    </DialogContent>
+    <DialogActions>
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="HandleSubmit">Submit</MudButton>
+        <MudButton OnClick="Cancel">Cancel</MudButton>
+    </DialogActions>
+</MudDialog>
+

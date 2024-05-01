@@ -1,0 +1,50 @@
+@page "/trackingOrders"
+@inherits KenbanBoardBase
+
+<PageTitle>Tracking Orders</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="pa-12">
+    <div class="d-flex justify-space-between">
+        <MudPaper Class="bg-paper mb-8" Width="40%" Elevation="0" MaxHeight="18%">
+            <h3 class="mb-4">Tracking Orders</h3>
+        </MudPaper>
+        <MudPaper Class=" d-flex justify-end gap-6 bg-paper mb-8" Elevation="0" Width="96%" MaxHeight="18%">
+
+            <MudButton OnClick="@AddNewOrder" Variant="Variant.Outlined" StartIcon="@Icons.Material.Filled.Add" Color="Color.Primary">Add Order</MudButton>
+            <MudButton OnClick="@DownloadAsJson" Variant="Variant.Outlined" StartIcon="@Icons.Material.Filled.Save" Color="Color.Primary">Save Board</MudButton>
+            <MudFileUpload T="IBrowserFile" FilesChanged="UploadFiles">
+                <ButtonTemplate>
+                    <MudButton HtmlTag="label"
+                               Variant="Variant.Outlined"
+                               Color="Color.Primary"
+                               StartIcon="@Icons.Material.Filled.CloudUpload"
+                               for="@context.Id">
+                        Upload Files
+                    </MudButton>
+                </ButtonTemplate>
+            </MudFileUpload>
+        </MudPaper>
+    </div>
+   
+    <MudGrid >
+        <MudDropContainer T="OrderHeader" @ref="DropContainer" Items="@OrderHeaders" ItemsSelector="@((item, column) => GetOrderStatusAsString(item.OrderStatus) == column)" ItemDropped="UpdateOrderHeader" Class="d-flex flex-row">
+
+            <ChildContent>
+                @foreach (var item in Sections)
+                {
+                    <MudPaper Elevation="0" Width="340px" MinHeight="600px" Class="pa-6 ma-4 d-flex flex-column rounded-lg">
+                        <MudToolBar DisableGutters="true">
+                            <MudText Typo="Typo.h6"><b>@item.Name</b></MudText>
+                            <MudSpacer/>
+                        </MudToolBar>
+                        <MudDropZone T="OrderHeader" Identifier="@item.Name" Class="mud-height-full"/>
+                    </MudPaper>
+                }
+            </ChildContent>
+            <ItemRenderer>
+                <MudPaper Elevation="25" Class="pa-4 rounded-lg my-3">@context.OrderNumber</MudPaper>
+            </ItemRenderer>
+        </MudDropContainer>
+    </MudGrid>
+
+</MudContainer>

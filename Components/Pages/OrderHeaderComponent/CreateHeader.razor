@@ -1,0 +1,44 @@
+@inherits CreateBase
+
+<MudDialog >
+  <DialogContent >
+    <MudForm Model="CurrentOrder" @ref="@_form">
+      <MudGrid>
+        <MudItem xs="16" sm="10" md="6">
+          <MudTextField Label="Order Number" @bind-Value="CurrentOrder.OrderNumber"></MudTextField>
+        </MudItem>
+        <MudItem xs="16" sm="10" md="6">
+          <MudSelect @bind-Value="CurrentOrder.OrderType" Label="OrderType">
+            @foreach (OrderType orderType in Enum.GetValues(typeof(OrderType)))
+            {
+              <MudSelectItem Value="@orderType">@orderType</MudSelectItem>
+            }
+          </MudSelect>
+        </MudItem>
+        <MudItem xs="16" sm="10" md="6">
+          <div style="display: flex; align-items: center;">
+            <MudDatePicker DateFormat="dd/MM/yyyy" Label="Order Created" @bind-Date="CurrentOrder.OrderCreated" PickerClosed="UpdateTimeForOrderCreated"/>
+            <span style="margin-left: 10px; margin-right: 10px;">at</span>
+            <MudTimePicker @ref="TimePicket" PickerClosed="UpdateTimeForOrderCreated"/>
+          </div>
+        </MudItem>
+        <MudItem xs="16" sm="10" md="6">
+          <MudSelect @bind-Value="CurrentOrder.OrderStatus" Label="OrderStatus">
+            @foreach (OrderStatus orderStatus in Enum.GetValues(typeof(OrderStatus)))
+            {
+              <MudSelectItem Value="@orderStatus">@orderStatus</MudSelectItem>
+            }
+          </MudSelect>
+        </MudItem>
+        <MudItem xs="16" sm="10" md="6">
+          <MudTextField Label="Customer Name" @bind-Value="CurrentOrder.CustomerName"></MudTextField>
+        </MudItem>
+      </MudGrid>
+    </MudForm>
+
+  </DialogContent>
+  <DialogActions>
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="HandleSubmit">Submit</MudButton>
+    <MudButton OnClick="Cancel">Cancel</MudButton>
+  </DialogActions>
+</MudDialog>

@@ -1,0 +1,101 @@
+@* @page "/EditOrderHeader" *@
+@* @page "/EditOrderHeader/{Id}" *@
+@inherits EditOrderHeaderScreenBase
+
+
+@if(Id is null)
+{
+  <PageTitle>Add New Order</PageTitle>  
+  <h3>Add New Order</h3>  
+}
+else
+{
+  <PageTitle>Edit @CurrentOrder.OrderNumber</PageTitle>  
+  <h3>Edit @CurrentOrder.OrderNumber</h3>  
+}
+
+@* <EditForm Model="CurrentOrder" OnSubmit="HandleSubmit"> *@
+@*   <MudDialog > *@
+@*     <MudCard > *@
+@*       <MudCardContent> *@
+@*         <MudTextField Label="Order Number" @bind-Value="CurrentOrder.OrderNumber"></MudTextField> *@
+@* *@
+@*         <MudSelect @bind-Value="CurrentOrder.OrderType" Label="OrderType"> *@
+@*           @foreach (OrderType orderType in Enum.GetValues(typeof(OrderType))) *@
+@*           { *@
+@*             <MudSelectItem Value="@orderType">@orderType</MudSelectItem> *@
+@*           } *@
+@*         </MudSelect> *@
+@* *@
+@*         <MudSelect @bind-Value="CurrentOrder.OrderStatus" Label="OrderStatus"> *@
+@*           @foreach (OrderStatus orderStatus in Enum.GetValues(typeof(OrderStatus))) *@
+@*           { *@
+@*             <MudSelectItem Value="@orderStatus">@orderStatus</MudSelectItem> *@
+@*           } *@
+@*         </MudSelect> *@
+@* *@
+@* *@
+@*         <MudDatePicker Label="Order Created" @bind-Date="CurrentOrder.OrderCreated" *@
+@*                        DateFormat="dd/MM/yyyy"> *@
+@* *@
+@*         </MudDatePicker> *@
+@*         <MudTextField Label="Customer Name" @bind-Value="CurrentOrder.CustomerName"></MudTextField> *@
+@*       </MudCardContent> *@
+@*       <MudCardActions> *@
+@*         <MudButton ButtonType="ButtonType.Submit" >Submit</MudButton> *@
+@*         <MudButton ButtonType="ButtonType.Reset" >Cancel</MudButton> *@
+@*       </MudCardActions> *@
+@*     </MudCard> *@
+@*   </MudDialog> *@
+@* *@
+@* </EditForm> *@
+
+@* *@
+@* <EditForm Model="CurrentOrder" OnSubmit="HandleSubmit"> *@
+@* *@
+@* *@
+@* </EditForm> *@
+
+<MudDialog >
+  <DialogContent >
+    <MudForm Model="CurrentOrder" @ref="@_form">
+      <MudGrid>
+        <MudItem>
+          <MudTextField Label="Order Number" @bind-Value="CurrentOrder.OrderNumber"></MudTextField>
+        </MudItem>
+        <MudItem>
+          <MudSelect @bind-Value="CurrentOrder.OrderType" Label="OrderType">
+            @foreach (OrderType orderType in Enum.GetValues(typeof(OrderType)))
+            {
+            <MudSelectItem Value="@orderType">@orderType</MudSelectItem>
+            }
+          </MudSelect>
+        </MudItem>
+        <MudItem>
+          <MudSelect @bind-Value="CurrentOrder.OrderStatus" Label="OrderStatus">
+            @foreach (OrderStatus orderStatus in Enum.GetValues(typeof(OrderStatus)))
+            {
+            <MudSelectItem Value="@orderStatus">@orderStatus</MudSelectItem>
+            }
+          </MudSelect>
+        </MudItem>
+        <MudItem>
+          <div style="display: flex; align-items: center;">
+            <MudDatePicker DateFormat="dd.MM.yyyy" Label="Start date" @bind-Date="CurrentOrder.OrderCreated" PickerClosed="UpdateTimeForOrderCreated" />
+            <span style="margin-left: 10px;">at</span>
+            <MudTimePicker @ref="TimePicket" PickerClosed="UpdateTimeForOrderCreated" />
+          </div>
+        </MudItem>
+
+        <MudItem>
+          <MudTextField Label="Customer Name" @bind-Value="CurrentOrder.CustomerName"></MudTextField>
+        </MudItem>
+      </MudGrid>
+    </MudForm>
+   
+  </DialogContent>
+  <DialogActions>
+    <MudButton OnClick="HandleSubmit">Submit</MudButton>
+    <MudButton OnClick="Cancel">Cancel</MudButton>
+  </DialogActions>
+</MudDialog>

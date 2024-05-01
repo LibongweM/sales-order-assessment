@@ -1,0 +1,90 @@
+@font-face {
+    font-family: 'Pilat';
+    src: url('fonts/pilat/Pilat Light.ttf');
+    src: local('Pilat Light'), local('Pilat Light'),
+    url('fonts/pilat/Pilat Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pilat Demi';
+    src: url('fonts/pilat/Pilat Demi.ttf');
+    src: local('Pilat Demi'), local('Pilat Demi'),
+    url('fonts/pilat/Pilat Demi.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pilat Wide';
+    src: url('fonts/pilat/PilatWide-Bold.ttf');
+    src: local('Pilat Wide Bold'), local('PilatWide-Bold'),
+    url('fonts/pilat/PilatWide-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pilat Wide';
+    src: url('fonts/pilat/PilatWide-Thin.ttf');
+    src: local('Pilat Wide Thin'), local('PilatWide-Thin'),
+    url('fonts/pilat/PilatWide-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pilat Wide Demi';
+    src: url('fonts/pilat/PilatWide-DemiBold.ttf');
+    src: local('Pilat Wide DemiBold'), local('PilatWide-DemiBold'),
+    url('fonts/pilat/PilatWide-DemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pilat Wide Book';
+    src: url('fonts/pilat/PilatWide-Book.ttf');
+    src: local('Pilat Wide Book'), local('PilatWide-Book'),
+    url('fonts/pilat/PilatWide-Book.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pilat Wide';
+    src: url('fonts/pilat/PilatWide-Regular.ttf');
+    src: local('Pilat Wide Regular'), local('PilatWide-Regular'),
+    url('fonts/pilat/PilatWide-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pilat Wide';
+    src: url('fonts/pilat/PilatWide-Black.ttf');
+    src: local('Pilat Wide Black'), local('PilatWide-Black'),
+    url('fonts/pilat/PilatWide-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pilat Wide';
+    src: url('fonts/pilat/PilatWide-Heavy.ttf');
+    src: local('Pilat Wide Heavy'), local('PilatWide-Heavy'),
+    url('fonts/pilat/PilatWide-Heavy.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pilat Wide';
+    src: url('fonts/pilat/PilatWide-Light.ttf');
+    src: local('Pilat Wide Light'), local('PilatWide-Light'),
+    url('fonts/pilat/PilatWide-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+

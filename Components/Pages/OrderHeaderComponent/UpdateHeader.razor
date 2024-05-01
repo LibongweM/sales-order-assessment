@@ -1,0 +1,53 @@
+@inherits UpdateHeaderBase
+
+<MudDialog >
+    <DialogContent >
+        <MudForm Model="orderHeader" @ref="@_form">
+            <MudGrid>
+                <MudItem xs="16" sm="10" md="6">
+                    <MudTextField Label="Order Number" @bind-Value="orderHeader.OrderNumber"></MudTextField>
+                </MudItem>
+             
+                <MudItem xs="16" sm="10" md="6">
+                    <MudSelect @bind-Value="orderHeader.OrderType" Label="OrderType">
+                        @foreach (OrderType orderType in Enum.GetValues(typeof(OrderType)))
+                        {
+                            <MudSelectItem Value="@orderType">@orderType</MudSelectItem>
+                        }
+                    </MudSelect>
+                </MudItem>
+                <MudItem xs="16" sm="10" md="6">
+                    <div style="display: flex; align-items: center;">
+                        <MudDatePicker Label="Order Created" @bind-Date="orderHeader.OrderCreated"
+                                       DateFormat="dd/MM/yyyy" PickerClosed="UpdateTimeForOrderCreated">
+
+                        </MudDatePicker>
+                        <span style="margin-left: 10px;">at</span>
+                        <MudTimePicker @ref="TimePicket" PickerClosed="UpdateTimeForOrderCreated"/>
+                    </div>
+                    
+                </MudItem>
+                
+                <MudItem xs="16" sm="10" md="6">
+                    <MudSelect @bind-Value="orderHeader.OrderStatus" Label="OrderStatus">
+                        @foreach (OrderStatus orderStatus in Enum.GetValues(typeof(OrderStatus)))
+                        {
+                        <MudSelectItem Value="@orderStatus">@orderStatus</MudSelectItem>
+                        }
+                    </MudSelect>
+                </MudItem>
+               
+                <MudItem xs="16" sm="10" md="6">
+                    <MudTextField Label="Customer Name" @bind-Value="orderHeader.CustomerName"></MudTextField>
+                </MudItem>
+       
+            </MudGrid>
+        </MudForm>
+  
+
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="HandleSubmit">Update</MudButton>
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="Cancel">Cancel</MudButton>
+    </DialogActions>
+</MudDialog>

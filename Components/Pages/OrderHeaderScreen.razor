@@ -1,0 +1,153 @@
+﻿@page "/"
+@inherits OrderHeaderBase
+
+
+<PageTitle>Orders</PageTitle>
+<MudContainer MaxWidth="MaxWidth.Large" Class="pa-12">
+    <h3 class="mb-8">Sales Orders</h3>
+
+    <MudExpansionPanel Text="Search" Class=" pa-5 mb-8 rounded">
+
+        <MudGrid>
+            <MudItem xs="12" sm="6" md="4">
+                <MudTextField Label="Order Header" @bind-Value="SearchOrderHeader"/>
+            </MudItem>
+            <MudItem xs="12" sm="6" md="4">
+                <MudTextField Label="Order Type" @bind-Value="SearchOrderType"/>
+            </MudItem>
+            <MudItem xs="12" sm="6" md="4">
+                <MudDatePicker Label="From Date" @bind-Date="@FromDate"/>
+            </MudItem>
+            <MudItem xs="12" sm="6" md="4">
+                <MudDatePicker Label="To Date" @bind-Date="@ToDate"/>
+            </MudItem>
+
+            <MudItem xs="12" sm="6" md="8" Class="d-flex justify-end pa-2 mb-3 mt-3">
+                <MudIconButton Icon="@Icons.Material.Filled.Search" Variant="Variant.Outlined" Color="Color.Primary" @onclick="SearchOrders"></MudIconButton >
+            </MudItem>
+        </MudGrid>
+    </MudExpansionPanel>
+
+
+    
+    <MudTable T="OrderHeader" Class="pa-5 mb-5" Items="@orderHeaders.Take(6)" Hover="true" Breakpoint="Breakpoint.Sm" @ref="mudTable"
+              RowClass="cursor-pointer" RowClassFunc="@SelectedRowClassFunc" OnRowClick="RowClickEvent">
+        <ToolBarContent >
+            <div Class="d-flex justify-end" style="width: 100%">
+                <MudButton @onclick="AddNewOrder " Variant="Variant.Outlined" Color="Color.Primary" >
+                    Add New Order
+                </MudButton>
+            </div>
+        </ToolBarContent>
+        <HeaderContent>
+            <MudTh>#</MudTh>
+            <MudTh>Order Type</MudTh>
+            <MudTh>Order Status</MudTh>
+            <MudTh>Customer Name</MudTh>
+            <MudTh>Date Created</MudTh>
+            <MudTh></MudTh>
+        </HeaderContent>
+
+        <RowTemplate>
+                <MudTd DataLabel="#">@context.OrderNumber</MudTd>
+                <MudTd >@context.OrderType</MudTd>
+                <MudTd DataLabel="Order Status">@context.OrderStatus</MudTd>
+                <MudTd DataLabel="Customer Name">@context.CustomerName</MudTd>
+                <MudTd DataLabel="Date Created">@context.OrderCreated</MudTd>
+
+                <MudTd Class="d-flex justify-end gap-4">
+                    <MudButton StartIcon="@Icons.Material.Filled.Edit" Variant="Variant.Outlined" Color="Color.Primary" @onclick="@(() => UpdateOrderHeader(context))">
+                        Edit
+                    </MudButton>
+
+                    <MudButton StartIcon="@Icons.Material.Filled.Delete" Variant="Variant.Outlined" Color="Color.Primary" @onclick="@(() => DeleteOrderHeader(context.Id))">
+                        Delete
+                    </MudButton>
+                </MudTd>
+        </RowTemplate>
+    </MudTable>
+
+
+   
+    @if (HeaderId != null)
+    {
+        <MudDivider Class="mb-5 mt-15"/>
+        
+        <MudExpansionPanel Text="Search" Class=" pa-5 mb-8 rounded">
+
+            <MudGrid Class="d-flex justify-space-between ">
+                <MudItem xs="12" sm="6" md="4">
+                    <MudTextField Label="Product Code" @bind-Value="SearchProductCode" />
+                </MudItem>
+                <MudItem Class="d-flex justify-end pa-2 mb-3 mt-3">
+                    <MudIconButton Icon="@Icons.Material.Filled.Search" Variant="Variant.Outlined" Color="Color.Primary" @onclick="SearchOrderLines"></MudIconButton >
+                </MudItem>
+            </MudGrid>
+        </MudExpansionPanel>
+        
+        @if (orderLines == null || orderLines.Count == 0)
+        {
+            <MudPaper>
+                <MudGrid Class="mb-5 mt-15 pa-8">
+                    <div Class="d-flex justify-end" style="width: 100%">
+                        <MudButton OnClick="@((e) => AddNewOrderLine())" Variant="Variant.Outlined" Color="Color.Primary">
+                            Add New Order Line
+                        </MudButton>
+                    </div>
+                    
+                    <div Class="d-flex justify-center mb-5" style="width: 100%">
+                        <h6>No Order Lines available</h6>
+                    </div>
+                </MudGrid>
+            </MudPaper>
+        }
+        else
+        {
+
+            <MudTable T="OrderLine" Class="pa-5" Items="@orderLines.Take(6)" Hover="true" Breakpoint="Breakpoint.Md" @ref="orderLineTable"
+                      RowClass="cursor-pointer">
+
+                <ToolBarContent >
+                    <div Class="d-flex justify-end" style="width: 100%">
+                        <MudButton OnClick="@((e) => AddNewOrderLine())" Variant="Variant.Outlined" Color="Color.Primary">
+                            Add New Order Line
+                        </MudButton>
+                    </div>
+                </ToolBarContent>
+                <HeaderContent>
+                    <MudTh>Line Number</MudTh>
+                    <MudTh>Product Code</MudTh>
+                    <MudTh>Product Type</MudTh>
+                    <MudTh>Product Cost Price</MudTh>
+                    <MudTh>Product Sale Price</MudTh>
+                    <MudTh>Quantity</MudTh>
+
+                    <MudTh></MudTh>
+                </HeaderContent>
+                <RowTemplate>
+                    <MudTd DataLabel="Line Number">@context.LineNumber</MudTd>
+                    <MudTd DataLabel="Product Code">@context.ProductCode</MudTd>
+                    <MudTd DataLabel="Product Type">@context.ProductType</MudTd>
+                    <MudTd DataLabel="Product Cost Price">@context.ProductCostPrice</MudTd>
+                    <MudTd DataLabel="Product Sale Price">@context.ProductSalesPrice</MudTd>
+                    <MudTd DataLabel="Quantity">@context.Quantity</MudTd>
+
+                    <MudTd Class="d-flex justify-end gap-4">
+                        <MudButton StartIcon="@Icons.Material.Filled.Edit" Variant="Variant.Outlined" Color="Color.Primary" @onclick="@(() => UpdateOrderLine(context))">
+                            Edit
+                        </MudButton>
+
+                        <MudButton StartIcon="@Icons.Material.Filled.Delete" Variant="Variant.Outlined" Color="Color.Primary" @onclick="@(() => DeleteOrderLine(context.Id))">
+                            Delete
+                        </MudButton>
+                    </MudTd>
+
+                </RowTemplate>
+            </MudTable>
+        }
+        
+       
+    }
+
+</MudContainer>
+

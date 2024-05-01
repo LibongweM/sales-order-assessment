@@ -1,0 +1,37 @@
+@inherits UpdateBase
+
+<MudDialog >
+    <DialogContent >
+        <MudForm Model="orderLine" @ref="@_form">
+            <MudGrid>
+                <MudItem xs="16" sm="10" md="6">
+                    <MudTextField Label="Product Code" @bind-Value="orderLine.ProductCode"></MudTextField>
+                </MudItem>
+                <MudItem xs="16" sm="10" md="6">
+                    <MudSelect @bind-Value="orderLine.ProductType" Label="Product Type">
+                        @foreach (ProductType productType in Enum.GetValues(typeof(ProductType)))
+                        {
+                            <MudSelectItem Value="@productType">@productType</MudSelectItem>
+                        }
+                    </MudSelect>
+                </MudItem>
+                <MudItem xs="16" sm="10" md="6">
+                    <MudTextField Label="Product Cost Price" @bind-Value="orderLine.ProductCostPrice"></MudTextField>
+                </MudItem >
+                <MudItem xs="16" sm="10" md="6">
+                    <MudTextField Label="Product Sales Price" @bind-Value="orderLine.ProductSalesPrice"></MudTextField>
+                </MudItem>
+                <MudItem xs="16" sm="10" md="6">
+                    <MudTextField Label="Quantity" @bind-Value="orderLine.Quantity"></MudTextField>
+                </MudItem>
+       
+            </MudGrid>
+        </MudForm>
+  
+
+    </DialogContent>
+    <DialogActions>
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="HandleSubmit">Update</MudButton>
+        <MudButton OnClick="Cancel">Cancel</MudButton>
+    </DialogActions>
+</MudDialog>

@@ -1,0 +1,96 @@
+@font-face {
+    font-family: 'Pilat Wide';
+    src: url('PilatWide-Bold.eot');
+    src: local('Pilat Wide Bold'), local('PilatWide-Bold'),
+        url('PilatWide-Bold.eot?#iefix') format('embedded-opentype'),
+        url('PilatWide-Bold.woff2') format('woff2'),
+        url('PilatWide-Bold.woff') format('woff'),
+        url('PilatWide-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pilat Wide';
+    src: url('PilatWide-Thin.eot');
+    src: local('Pilat Wide Thin'), local('PilatWide-Thin'),
+        url('PilatWide-Thin.eot?#iefix') format('embedded-opentype'),
+        url('PilatWide-Thin.woff2') format('woff2'),
+        url('PilatWide-Thin.woff') format('woff'),
+        url('PilatWide-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pilat Wide Demi';
+    src: url('PilatWide-DemiBold.eot');
+    src: local('Pilat Wide DemiBold'), local('PilatWide-DemiBold'),
+        url('PilatWide-DemiBold.eot?#iefix') format('embedded-opentype'),
+        url('PilatWide-DemiBold.woff2') format('woff2'),
+        url('PilatWide-DemiBold.woff') format('woff'),
+        url('PilatWide-DemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pilat Wide Book';
+    src: url('PilatWide-Book.eot');
+    src: local('Pilat Wide Book'), local('PilatWide-Book'),
+        url('PilatWide-Book.eot?#iefix') format('embedded-opentype'),
+        url('PilatWide-Book.woff2') format('woff2'),
+        url('PilatWide-Book.woff') format('woff'),
+        url('PilatWide-Book.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pilat Wide';
+    src: url('PilatWide-Regular.eot');
+    src: local('Pilat Wide Regular'), local('PilatWide-Regular'),
+        url('PilatWide-Regular.eot?#iefix') format('embedded-opentype'),
+        url('PilatWide-Regular.woff2') format('woff2'),
+        url('PilatWide-Regular.woff') format('woff'),
+        url('PilatWide-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pilat Wide';
+    src: url('PilatWide-Black.eot');
+    src: local('Pilat Wide Black'), local('PilatWide-Black'),
+        url('PilatWide-Black.eot?#iefix') format('embedded-opentype'),
+        url('PilatWide-Black.woff2') format('woff2'),
+        url('PilatWide-Black.woff') format('woff'),
+        url('PilatWide-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pilat Wide';
+    src: url('PilatWide-Heavy.eot');
+    src: local('Pilat Wide Heavy'), local('PilatWide-Heavy'),
+        url('PilatWide-Heavy.eot?#iefix') format('embedded-opentype'),
+        url('PilatWide-Heavy.woff2') format('woff2'),
+        url('PilatWide-Heavy.woff') format('woff'),
+        url('PilatWide-Heavy.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pilat Wide';
+    src: url('PilatWide-Light.eot');
+    src: local('Pilat Wide Light'), local('PilatWide-Light'),
+        url('PilatWide-Light.eot?#iefix') format('embedded-opentype'),
+        url('PilatWide-Light.woff2') format('woff2'),
+        url('PilatWide-Light.woff') format('woff'),
+        url('PilatWide-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
